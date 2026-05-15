@@ -1,3 +1,4 @@
+import "react"
 import { cva } from "class-variance-authority";
 import { Slot } from "radix-ui"
 
