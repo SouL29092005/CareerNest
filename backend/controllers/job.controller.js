@@ -7,10 +7,10 @@ export const postJob = async (req, res) => {
       description,
       requirements,
       salary,
+      experience,
       location,
       jobType,
-      experience,
-      position,
+      openings,
       companyId,
     } = req.body;
     const userId = req.id;
@@ -23,7 +23,7 @@ export const postJob = async (req, res) => {
       !location ||
       !jobType ||
       !experience ||
-      !position ||
+      !openings ||
       !companyId
     ) {
       return res.status(400).json({
@@ -39,7 +39,7 @@ export const postJob = async (req, res) => {
       location,
       jobType,
       experienceLevel: experience,
-      position,
+      openings,
       company: companyId,
       created_by: userId,
     });
