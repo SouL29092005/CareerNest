@@ -17,9 +17,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-72 h-72 bg-violet-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-200 rounded-full blur-3xl opacity-30 -z-10"></div>
+    <section className="relative">
 
       <div className="max-w-7xl mx-auto px-6 py-20 text-center">
         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-violet-100 text-violet-700 font-semibold text-sm shadow-sm">
