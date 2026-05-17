@@ -11,6 +11,7 @@ import { setLoading } from "@/redux/authSlice";
 import { Loader2, UserPlus } from "lucide-react";
 import { USER_API_END_POINT } from "@/utils/apiConstants";
 import { Eye, EyeOff } from "lucide-react";
+import Footer from "../shared/Footer";
 
 const Signup = () => {
   const [input, setInput] = useState({
@@ -55,7 +56,12 @@ const Signup = () => {
     try {
       dispatch(setLoading(true));
       if (input.password !== input.confirmPassword) {
-  toast.error("Passwords do not match");
+        toast.error("Passwords do not match");
+        return;
+      }
+
+      if (input.password.length < 6) {
+  toast.error("Password must be at least 6 characters");
   return;
 }
 
@@ -150,37 +156,35 @@ const Signup = () => {
 
           {/* Password */}
           <div className="mb-4">
-  <Label className="text-gray-200 mb-2 block">
-    Password
-  </Label>
+            <Label className="text-gray-200 mb-2 block">Password</Label>
 
-  <div className="relative">
-    <Input
-      type={showPassword ? "text" : "password"}
-      value={input.password}
-      name="password"
-      onChange={changeEventHandler}
-      placeholder="Choose a strong password"
-      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-2 focus-visible:ring-indigo-500 h-11 pr-12"
-    />
+            <div className="relative">
+              <Input
+                type={showPassword ? "text" : "password"}
+                value={input.password}
+                name="password"
+                onChange={changeEventHandler}
+                placeholder="Choose a strong password"
+                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus-visible:ring-2 focus-visible:ring-indigo-500 h-11 pr-12"
+              />
 
-    <button
-      type="button"
-      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
-      onMouseDown={() => setShowPassword(true)}
-      onMouseUp={() => setShowPassword(false)}
-      onMouseLeave={() => setShowPassword(false)}
-      onTouchStart={() => setShowPassword(true)}
-      onTouchEnd={() => setShowPassword(false)}
-    >
-      {showPassword ? (
-        <Eye className="w-5 h-5" />
-      ) : (
-        <EyeOff className="w-5 h-5" />
-      )}
-    </button>
-  </div>
-</div>
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                onMouseDown={() => setShowPassword(true)}
+                onMouseUp={() => setShowPassword(false)}
+                onMouseLeave={() => setShowPassword(false)}
+                onTouchStart={() => setShowPassword(true)}
+                onTouchEnd={() => setShowPassword(false)}
+              >
+                {showPassword ? (
+                  <Eye className="w-5 h-5" />
+                ) : (
+                  <EyeOff className="w-5 h-5" />
+                )}
+              </button>
+            </div>
+          </div>
 
           {/* Confirm Password */}
           <div className="mb-4">
@@ -303,6 +307,8 @@ const Signup = () => {
           </p>
         </form>
       </div>
+
+      <Footer />
     </div>
   );
 };

@@ -109,7 +109,7 @@ const Navbar = () => {
               <PopoverTrigger asChild>
                 <Avatar className="cursor-pointer ring-2 ring-transparent hover:ring-violet-500 transition-all duration-200">
                   <AvatarImage
-                    src={user?.profile?.profilePhoto}
+                    src={user?.profile?.profilePhoto || "https://github.com/shadcn.png"}
                     alt="@shadcn"
                   />
                 </Avatar>
@@ -119,7 +119,7 @@ const Navbar = () => {
                   <div className="flex gap-3 items-start">
                     <Avatar className="cursor-pointer">
                       <AvatarImage
-                        src={user?.profile?.profilePhoto}
+                        src={user?.profile?.profilePhoto || "https://github.com/shadcn.png"}
                         alt="@shadcn"
                       />
                     </Avatar>

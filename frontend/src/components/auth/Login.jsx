@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2, BriefcaseBusiness } from "lucide-react";
 import { USER_API_END_POINT } from "@/utils/apiConstants";
+import Footer from "../shared/Footer";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -180,6 +181,8 @@ const Login = () => {
           </form>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

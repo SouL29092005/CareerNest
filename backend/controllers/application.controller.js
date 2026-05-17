@@ -56,6 +56,7 @@ export const applyJob = async (req, res) => {
 export const getAppliedJobs = async (req, res) => {
   try {
     const userId = req.id;
+
     const application = await Application.find({ applicant: userId })
       .sort({ createdAt: -1 })
       .populate({
@@ -66,18 +67,15 @@ export const getAppliedJobs = async (req, res) => {
           options: { sort: { createdAt: -1 } },
         },
       });
-    if (application.length === 0) {
-      return res.status(404).json({
-        message: "No Applications",
-        success: false,
-      });
-    }
+
     return res.status(200).json({
       application,
       success: true,
     });
+
   } catch (error) {
     console.log(error);
+
     return res.status(500).json({
       message: "Internal server error",
       success: false,
