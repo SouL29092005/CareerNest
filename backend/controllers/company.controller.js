@@ -40,19 +40,17 @@ export const registerCompany = async (req, res) => {
 export const getCompany = async (req, res) => {
   try {
     const userId = req.id;
+
     const companies = await Company.find({ userId });
-    if (companies.length === 0) {
-      return res.status(404).json({
-        message: "Companies not found.",
-        success: false,
-      });
-    }
+
     return res.status(200).json({
       companies,
       success: true,
     });
+
   } catch (error) {
     console.log(error);
+
     return res.status(500).json({
       message: "Internal server error",
       success: false,
@@ -89,7 +87,7 @@ export const updateCompany = async (req, res) => {
     const { name, description, website, location } = req.body;
 
     let logo;
-
+    const file = req.file;
     if (file) {
       const fileUri = getDataUri(file);
       const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
