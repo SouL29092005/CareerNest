@@ -16,7 +16,7 @@ const jobSchema = new mongoose.Schema(
       validate: (v) => v.length > 0,
     },
     salary: {
-      type: Number,
+      type: Number, // in LPA
       required: true,
       min: 0,
     },
