@@ -144,7 +144,7 @@ const AdminJobsTable = () => {
                       align="end"
                     >
                       <div
-                        onClick={() => navigate(`/admin/companies/${job._id}`)}
+                        onClick={() => navigate(`/admin/jobs/${job._id}`)}
                         className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-gray-100 cursor-pointer transition"
                       >
                         <Edit2 className="w-4 h-4 text-gray-700" />

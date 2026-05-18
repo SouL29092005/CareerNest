@@ -146,3 +146,77 @@ export const getJobsCreatedByAdmin = async (req, res) => {
     });
   }
 };
+
+export const updateJob = async (req, res) => {
+  try {
+    const jobId = req.params.id;
+
+    const {
+      title,
+      description,
+      requirements,
+      salary,
+      experienceLevel,
+      location,
+      jobType,
+      openings,
+      company,
+    } = req.body;
+
+    if (
+      !title ||
+      !description ||
+      !requirements ||
+      !salary ||
+      !experienceLevel ||
+      !location ||
+      !jobType ||
+      !openings ||
+      !company
+    ) {
+      return res.status(400).json({
+        message: "All fields are required.",
+        success: false,
+      });
+    }
+
+    const updatedJob = await Job.findByIdAndUpdate(
+      jobId,
+      {
+        title,
+        description,
+        requirements,
+        salary: Number(salary),
+        experienceLevel: Number(experienceLevel),
+        location,
+        jobType,
+        openings: Number(openings),
+        company,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!updatedJob) {
+      return res.status(404).json({
+        message: "Job not found.",
+        success: false,
+      });
+    }
+
+    return res.status(200).json({
+      message: "Job updated successfully.",
+      success: true,
+      job: updatedJob,
+    });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      message: "Internal server error.",
+      success: false,
+    });
+  }
+};
