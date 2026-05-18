@@ -15,6 +15,8 @@ export const postJob = async (req, res) => {
     } = req.body;
     const userId = req.id;
 
+    console.log(req.body);
+
     if (
       !title ||
       !description ||
