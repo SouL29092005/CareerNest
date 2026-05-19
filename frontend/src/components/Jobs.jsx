@@ -4,8 +4,10 @@ import Job from "./Job";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Briefcase, SearchX } from "lucide-react";
+import useGetAllJobs from "@/hooks/useGetAllJobs";
 
 const Jobs = () => {
+  useGetAllJobs();
   const { allJobs, searchedQuery } = useSelector((store) => store.job);
 
   const filterJobs = allJobs.filter((job) => {

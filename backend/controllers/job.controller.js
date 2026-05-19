@@ -64,23 +64,20 @@ export const postJob = async (req, res) => {
 export const getAllJobs = async (req, res) => {
   try {
     const keyword = req.query.keyword || "";
+
     const query = {
       $or: [
         { title: { $regex: keyword, $options: "i" } },
         { description: { $regex: keyword, $options: "i" } },
       ],
     };
+
     const jobs = await Job.find(query)
       .populate({
         path: "company",
       })
       .sort({ createdAt: -1 });
-    if (jobs.length === 0) {
-      return res.status(404).json({
-        message: "Jobs not found.",
-        success: false,
-      });
-    }
+
     return res.status(200).json({
       jobs,
       success: true,
@@ -146,7 +143,7 @@ export const getJobsCreatedByAdmin = async (req, res) => {
     });
   }
 };
-
+// update jobs description for admins
 export const updateJob = async (req, res) => {
   try {
     const jobId = req.params.id;

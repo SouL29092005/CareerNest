@@ -51,15 +51,15 @@ const HeroSection = () => {
           <Button
             onClick={searchJobHandler}
             className="
-    m-2 rounded-xl
-    bg-gradient-to-r from-violet-600 
-    to-indigo-600 hover:from-violet-700
-    hover:to-indigo-700 text-white
-    px-6 py-6
-    shadow-lg hover:shadow-violet-300/40
-    transition-all -300
-    flex items-center gap-2
-  "
+              m-2 rounded-xl
+              bg-gradient-to-r from-violet-600 
+              to-indigo-600 hover:from-violet-700
+              hover:to-indigo-700 text-white
+              px-6 py-6
+              shadow-lg hover:shadow-violet-300/40
+              transition-all -300
+              flex items-center gap-2
+            "
           >
             <Search className="h-5 w-5" />
             <span className="hidden sm:block font-medium">Search</span>

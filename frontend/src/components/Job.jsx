@@ -14,6 +14,8 @@ const Job = ({ job }) => {
     const currentTime = new Date();
     const timeDifference = currentTime - createdAt;
     return Math.floor(timeDifference / (1000 * 24 * 60 * 60));
+    // console.log(createdAt);
+    // console.log(currentTime);
   };
 
   return (
@@ -90,7 +92,7 @@ const Job = ({ job }) => {
         <div className="mt-5 flex flex-wrap gap-3">
           
           <Badge className="rounded-full bg-blue-50 px-4 py-1 text-blue-700 hover:bg-blue-100 border border-blue-100">
-            {job?.position} Positions
+            {job?.openings} Positions
           </Badge>
 
           <Badge className="rounded-full bg-orange-50 px-4 py-1 text-orange-700 hover:bg-orange-100 border border-orange-100">
